@@ -27,6 +27,7 @@ bool Tree::AddNode(int nodeIndex, int direction, Node *pNode){
     }
     node->data = pNode -> data;
     node -> index = pNode -> index;
+    node->pParent = temp;
     
     if (direction == 0) {
         temp -> pLChild = node;

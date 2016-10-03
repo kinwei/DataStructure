@@ -50,6 +50,9 @@ int main(int argc, const char * argv[]) {
     tree->AddNode(2, 0, node5);
     tree -> AddNode(2, 1, node6);
     
+   
+    tree -> DeteleNode(6,NULL);
+    tree -> DeteleNode(5,NULL);
     cout<<"前序遍历"<<endl;
     tree -> PreorderTraversal();
     

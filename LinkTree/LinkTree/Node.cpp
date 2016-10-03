@@ -19,19 +19,29 @@ Node::Node(){
 }
 
 Node *Node::SearchNode(int nodeIndex){
-    
+    Node *temp = new Node();
     if (this->index == nodeIndex) {
         return this;
     }
     if(this->pLChild != NULL){
         if (this->pLChild->index == nodeIndex) {
             return this->pLChild;
+        }else{
+           temp = this -> pLChild -> SearchNode(nodeIndex);
+            if(temp !=NULL){
+                return temp;
+            }
         }
     }
     
     if(this->pRChild != NULL){
         if (this->pRChild->index == nodeIndex) {
             return this->pRChild;
+        }else{
+            temp = this -> pRChild -> SearchNode(nodeIndex);
+            if(temp !=NULL){
+                return temp;
+            }
         }
     }
     return NULL;
