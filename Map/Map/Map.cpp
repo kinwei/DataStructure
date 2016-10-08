@@ -103,3 +103,37 @@ void Map:: depthFirstTraverse(int nodeIndex){
     }
     
 }
+
+void Map::breadthFirstTraverse(int nodeIndex){
+    cout << m_pNodeArray[nodeIndex].m_cData << " ";
+    m_pNodeArray[nodeIndex].m_bIsVisited = true;
+    vector<int> curVer;
+    curVer.push_back(nodeIndex);
+    breadthFirstTraverseImpl(curVer);
+}
+void Map::breadthFirstTraverseImpl(vector<int> preVec){
+    int value = 0;
+    vector<int> curVec;
+    
+    for (int j=0; j < preVec.size(); j++) {
+        for (int i; i<m_iCapacity; i++) {
+            getValueFromMatrix(preVec[j], i, value);
+            if (value != 0) {
+                if (m_pNodeArray[i].m_bIsVisited) {
+                    continue;
+                }else{
+                    cout<<m_pNodeArray[i].m_cData << " ";
+                    m_pNodeArray[i].m_bIsVisited = true;
+                    curVec.push_back(i);
+                }
+            }
+        }
+    }
+    if (curVec.size() == 0) {
+        return;
+    }else{
+        breadthFirstTraverseImpl(curVec);
+    }
+}
+
+
